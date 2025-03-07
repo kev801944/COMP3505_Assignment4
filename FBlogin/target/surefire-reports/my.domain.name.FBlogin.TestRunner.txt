@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+Test set: my.domain.name.FBlogin.TestRunner
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 9.495 s <<< FAILURE! -- in my.domain.name.FBlogin.TestRunner
+Test Facebook Login.Test Facebook login #1 -- Time elapsed: 3.207 s <<< FAILURE!
+java.lang.AssertionError
+	at my.domain.name.FBlogin.steps.LoginSteps.i_should_be_able_to_login_successfully(LoginSteps.java:52)
+	at ✽.I should be able to login successfully(classpath:my/domain/name/FBlogin/feature/login.feature:6)
+
+Test Facebook Login.Test Facebook login #2 -- Time elapsed: 6.234 s <<< FAILURE!
+java.lang.AssertionError
+	at my.domain.name.FBlogin.steps.LoginSteps.i_should_be_able_to_login_successfully(LoginSteps.java:52)
+	at ✽.I should be able to login successfully(classpath:my/domain/name/FBlogin/feature/login.feature:6)
+
