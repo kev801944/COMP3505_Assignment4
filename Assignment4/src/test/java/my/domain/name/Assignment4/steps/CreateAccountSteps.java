@@ -1,4 +1,4 @@
-package steps;
+package my.domain.name.Assignment4.steps;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
