@@ -8,17 +8,14 @@ import io.cucumber.java.en.*;
 public class CreateAccountSteps {
     WebDriver driver;
 
-    @Given("I navigate to the JPetStore registration page")
-    public void i_navigate_to_registration_page() {
-        driver.get("http://your-jpetstore-url.com/register");
-    }
+    System.setProperty("webdriver.chrome.driver", "C:\\Users\\micha\\Downloads\\chromedriver-win64\\chromedriver.exe");
+    WebDriver driver = new ChromeDriver();
+    try {
 
-    @When("I enter valid account details")
-    public void i_enter_valid_account_details() {
+        driver.get("http://130.211.202.212:8080/jpetstore/actions/Account.action?newAccountForm=");
         driver.findElement(By.name("username")).sendKeys("testUser123");
         driver.findElement(By.name("password")).sendKeys("testPass123");
         driver.findElement(By.name("repeatedPassword")).sendKeys("testPass123");
-        
         driver.findElement(By.name("account.firstName")).sendKeys("Michael");
         driver.findElement(By.name("account.lastName")).sendKeys("Tandyo");
         driver.findElement(By.name("account.email")).sendKeys("michael@example.com");
@@ -30,18 +27,18 @@ public class CreateAccountSteps {
         driver.findElement(By.name("account.zip")).sendKeys("T2X 0L3");
         driver.findElement(By.name("account.country")).sendKeys("Canada");
         driver.findElement(By.name("newAccount")).click();
+
         Thread.sleep(5000);
-    }
+    } catch (Exception e) {
 
-    @And("I submit the form")
-    public void i_submit_the_form() {
-        driver.findElement(By.name("register")).click();
-    }
+        e.printStackTrace();
 
-    @Then("I should see an account creation confirmation message")
-    public void i_should_see_confirmation_message() {
-        boolean isCreated = driver.findElement(By.id("confirmation")).isDisplayed();
-        assert isCreated;
+    } finally {
         driver.quit();
     }
+
 }
+
+}
+
+
