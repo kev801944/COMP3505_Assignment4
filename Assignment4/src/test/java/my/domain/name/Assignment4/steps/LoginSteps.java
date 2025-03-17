@@ -12,38 +12,41 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class LoginSteps {
-	WebDriver driver;
+public class Login{
 
-	@Given("I open Chrome browser")
-	public void i_open_Chrome_browser() throws Throwable {
-	 System.setProperty("webdriver.chrome.driver", "chrome/chromedriver.exe");
-	 driver = new ChromeDriver();
-	 driver.manage().window().maximize();
-	}
-	
-	@Given("I go to Facebook page")
-	public void i_go_to_Facebook_page() throws Throwable {
-		driver.get("http://www.facebook.com");
-	}
-	
-	@When("I enter valid {string} and {string} combination")
-	public void i_enter_valid_and_combination(String arg1, String arg2) throws Throwable {
-		driver.findElement(By.name("email")).sendKeys(arg1);
-		driver.findElement(By.name("pass")).sendKeys(arg2);
-		driver.findElement(By.cssSelector("[type='submit']")).click();
-	}
-	
-	@Then("I should be able to login successfully")
-	public void i_should_be_able_to_login_successfully() throws Throwable {
-		try {
-			WebElement element = driver.findElement(By.linkText("Home"));
-			assertTrue(true);
-		} catch (Exception e) {
-			fail();
-		} finally {
-			driver.quit();
-		}
-	}
+    public static void main(String[] args) {
+
+        
+
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\micha\\Downloads\\chromedriver-win64\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        try {
+        	driver.get("http://130.211.202.212:8080/jpetstore/actions/Catalog.action");
+        	WebElement signInLink = driver.findElement(By.xpath("//a[contains(@href, 'signonForm')]"));
+        	signInLink.click();
+        	Thread.sleep(2000); 
+        	WebElement usernameField = driver.findElement(By.xpath("//input[@name='username']"));
+
+            usernameField.clear();
+
+            usernameField.sendKeys("j2ee");
+
+            WebElement passwordField = driver.findElement(By.xpath("//input[@name='password']"));
+            passwordField.clear();
+            passwordField.sendKeys("j2ee");
+            WebElement loginButton = driver.findElement(By.xpath("//input[@value='Login']"));
+            loginButton.click();
+            Thread.sleep(5000);
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        } finally {
+
+            driver.quit();
+
+        }
+
+    }
 
 }
